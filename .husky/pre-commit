@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+BOLD='\033[1m'
+NC='\033[0m'
+
+echo "${YELLOW}${BOLD}🔍 Running pre-commit checks...${NC}"
+
+npx lint-staged || {
+  echo "${RED}${BOLD}❌ Pre-commit checks failed!${NC}"
+  echo "${RED}Please fix the issues above and try again.${NC}"
+  exit 1
+}
+
+echo "${GREEN}${BOLD}✅ Pre-commit checks passed!${NC}"

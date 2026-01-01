@@ -1,0 +1,31 @@
+#!/usr/bin/env sh
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+BLUE='\033[0;34m'
+BOLD='\033[1m'
+NC='\033[0m'
+
+echo "${BLUE}${BOLD}🚀 Running pre-push checks...${NC}"
+
+echo "${YELLOW}🔍 Running TypeScript type check...${NC}"
+npm run typecheck || {
+  echo "${RED}${BOLD}❌ TypeScript errors found!${NC}"
+  exit 1
+}
+
+echo "${YELLOW}🧹 Running full ESLint check...${NC}"
+npm run lint || {
+  echo "${RED}${BOLD}❌ ESLint errors found!${NC}"
+  exit 1
+}
+
+echo "${YELLOW}💅 Checking code formatting...${NC}"
+npm run format:check || {
+  echo "${RED}${BOLD}❌ Code formatting issues found!${NC}"
+  echo "${YELLOW}Run 'npm run format' to fix formatting issues.${NC}"
+  exit 1
+}
+
+echo "${GREEN}${BOLD}✅ All pre-push checks passed!${NC}"
