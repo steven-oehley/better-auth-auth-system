@@ -23,6 +23,8 @@ export default [
       'next-env.d.ts',
       '.eslintcache',
       'public/**',
+      'src/generated/**',
+      '**/generated/**',
     ],
   },
 

@@ -12,9 +12,13 @@
     "format:check": "prettier --check .",
     "typecheck": "tsc --noEmit",
     "quality": "npm run format && npm run lint:fix && npm run typecheck",
-    "prepare": "husky"
+    "prepare": "husky",
+    "postinstall": "npx prisma generate"
   },
   "dependencies": {
+    "@prisma/adapter-neon": "^7.2.0",
+    "@prisma/client": "^7.2.0",
+    "better-auth": "^1.4.10",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.562.0",
@@ -32,6 +36,7 @@
     "@next/eslint-plugin-next": "^16.1.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/pg": "^8.16.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
@@ -44,7 +49,9 @@
     "lint-staged": "^16.2.7",
     "prettier": "^3.7.4",
     "prettier-plugin-tailwindcss": "^0.7.2",
+    "prisma": "^7.2.0",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5",
     "typescript-eslint": "^8.51.0"
   }
